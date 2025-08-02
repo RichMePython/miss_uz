@@ -1,0 +1,32 @@
+{
+  "name": "miss-uz-pageant",
+  "version": "1.0.0",
+  "description": "Miss UZ Pageant 2025 Website with Database",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "setup": "node setup.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7",
+    "paynow": "^2.2.2",
+    "pesepay": "^1.0.4",
+    "qrcode": "^1.5.4",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "pageant",
+    "beauty",
+    "voting",
+    "tickets"
+  ],
+  "author": "Miss UZ Pageant Team",
+  "license": "MIT"
+}

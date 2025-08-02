@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miss UZ Pageant 2025</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Miss UZ 2025</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#contestants">Contestants</a></li>
+                <li><a href="#vote">Vote</a></li>
+                <li><a href="#tickets">Tickets</a></li>
+                <li><a href="#live">Live</a></li>
+                <li><a href="#sponsors">Sponsors</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Miss UZ Pageant 2025</h1>
+            <p>Beauty • Grace • Intelligence • Leadership</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToSection('contestants')">Register Now</button>
+                <button class="btn-secondary" onclick="scrollToSection('vote')">Vote Now</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="qr-code">
+                <h3>Scan to Access</h3>
+                <div id="qr-code"></div>
+                <p>Share this QR code</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contestants Registration Section -->
+    <section id="contestants" class="contestants-section">
+        <div class="container">
+            <h2>Become a Contestant</h2>
+            <p>Join the most prestigious beauty pageant in the region</p>
+            
+            <div class="registration-form">
+                <div class="form-instructions">
+                    <p><strong>📝 Registration Instructions:</strong> Please fill in all required fields marked with *. Your information will be stored securely in our database.</p>
+                </div>
+                <form id="contestantForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age *</label>
+                        <input type="number" id="age" placeholder="Enter your age (18-28)" min="18" max="28" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Biography *</label>
+                        <textarea id="bio" placeholder="Tell us about yourself, your interests, achievements, and why you want to participate in Miss UZ 2025..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo">Profile Photo *</label>
+                        <input type="file" id="photo" accept="image/*" required>
+                        <div class="file-upload-hint">Click to upload your profile photo (JPG, PNG, GIF)</div>
+                    </div>
+                    <button type="submit" class="btn-primary">Register as Contestant</button>
+                </form>
+            </div>
+
+            <div class="contestants-grid" id="contestantsGrid">
+                <!-- Contestants will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Voting Section -->
+    <section id="vote" class="voting-section">
+        <div class="container">
+            <h2>Vote for Your Favorite</h2>
+            <p>Support your favorite contestant and help them win the crown</p>
+            
+            <div class="voting-container">
+                <div class="vote-form">
+                    <h3>Cast Your Vote</h3>
+                    <form id="voteForm">
+                        <div class="form-group">
+                            <label for="contestantSelect">Choose Your Favorite Contestant *</label>
+                            <select id="contestantSelect" required>
+                                <option value="">Select a contestant from the list</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="voterEmail">Your Email Address *</label>
+                            <input type="email" id="voterEmail" placeholder="Enter your email address to vote" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Vote Now</button>
+                    </form>
+                </div>
+                
+                <div class="vote-results">
+                    <h3>Current Results</h3>
+                    <div id="voteResults">
+                        <!-- Vote results will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tickets Section -->
+    <section id="tickets" class="tickets-section">
+        <div class="container">
+            <h2>Get Your Tickets</h2>
+            <p>Don't miss the most glamorous event of the year</p>
+            
+            <div class="ticket-options">
+                <div class="ticket-card">
+                    <h3>VIP Package</h3>
+                    <div class="price">$150</div>
+                    <ul>
+                        <li>Premium seating</li>
+                        <li>Meet & Greet</li>
+                        <li>Exclusive access</li>
+                        <li>Complimentary refreshments</li>
+                    </ul>
+                    <button class="btn-primary" onclick="buyTicket('vip', 150)">Buy VIP</button>
+                </div>
+                
+                <div class="ticket-card featured">
+                    <h3>Standard Ticket</h3>
+                    <div class="price">$75</div>
+                    <ul>
+                        <li>Reserved seating</li>
+                        <li>Event access</li>
+                        <li>Program booklet</li>
+                        <li>Refreshments available</li>
+                    </ul>
+                    <button class="btn-primary" onclick="buyTicket('standard', 75)">Buy Standard</button>
+                </div>
+                
+                <div class="ticket-card">
+                    <h3>Student Ticket</h3>
+                    <div class="price">$45</div>
+                    <ul>
+                        <li>General seating</li>
+                        <li>Student ID required</li>
+                        <li>Event access</li>
+                        <li>Basic refreshments</li>
+                    </ul>
+                    <button class="btn-primary" onclick="buyTicket('student', 45)">Buy Student</button>
+                </div>
+            </div>
+
+            <div class="payment-modal" id="paymentModal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Complete Your Purchase</h3>
+                    <form id="paymentForm">
+                        <div class="form-group">
+                            <label for="cardName">Full Name *</label>
+                            <input type="text" id="cardName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ticketEmail">Email for Ticket *</label>
+                            <input type="email" id="ticketEmail" placeholder="Enter your email to receive the ticket" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="payment-info">
+                            <p><i class="fas fa-info-circle"></i> Your payment will be processed securely via PesePay. You will be redirected to complete your payment.</p>
+                        </div>
+                        <!-- Remove the following div block -->
+                        <!--
+                        <div class="test-cards-info">
+                            <h4>Test Payment Methods (For Development Only)</h4>
+                            
+                            <h4>Credit/Debit Cards</h4>
+                            <div class="test-card">
+                                <h5>VISA (Success)</h5>
+                                <p>Card Number: 486 796 000 000 546 1</p>
+                                <p>CVV: 608</p>
+                                <p>Expiry Date: Any future date</p>
+                            </div>
+                            <div class="test-card">
+                                <h5>VISA (Failure)</h5>
+                                <p>Card Number: 486 796 500 500 500 2</p>
+                                <p>CVV: 994</p>
+                                <p>Expiry Date: Any future date</p>
+                            </div>
+                            
+                            <h4>Mobile Money</h4>
+                            <div class="test-mobile ecocash">
+                                <h5>ECOCASH (Success)</h5>
+                                <p>Number: 0777777777</p>
+                                <p>OTP: Any 4 digits</p>
+                            </div>
+                            <div class="test-mobile ecocash">
+                                <h5>ECOCASH (Failure)</h5>
+                                <p>Number: 0770000000</p>
+                                <p>OTP: Any 4 digits</p>
+                            </div>
+                            <div class="test-mobile">
+                                <h5>OneMoney (Success)</h5>
+                                <p>Number: 0771111111</p>
+                                <p>OTP: Any 4 digits</p>
+                            </div>
+                        </div>
+                        -->
+                        <button type="submit" class="btn-primary">Pay Now</button>
+                    </form>
+                    <div id="payment-processing" style="display: none;">
+                        <p>Processing your payment. Please wait...</p>
+                        <div class="loader"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Updates Section -->
+    <section id="live" class="live-section">
+        <div class="container">
+            <h2>Live Behind the Scenes</h2>
+            <p>Get real-time updates from the pageant</p>
+            
+            <div class="live-feed">
+                <div class="live-stream">
+                    <div class="stream-placeholder">
+                        <i class="fas fa-video"></i>
+                        <h3>Live Stream</h3>
+                        <p>Stream will be available during the event</p>
+                    </div>
+                </div>
+                
+                <div class="live-updates">
+                    <h3>Latest Updates</h3>
+                    <div id="liveUpdates">
+                        <div class="update-item">
+                            <span class="time">2:30 PM</span>
+                            <p>Contestants are arriving for final rehearsals</p>
+                        </div>
+                        <div class="update-item">
+                            <span class="time">2:15 PM</span>
+                            <p>Hair and makeup team is setting up</p>
+                        </div>
+                        <div class="update-item">
+                            <span class="time">2:00 PM</span>
+                            <p>Stage setup is complete</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="sponsors-section">
+        <div class="container">
+            <h2>Our Sponsors</h2>
+            <p>Proudly supported by leading brands</p>
+            
+            <div class="sponsors-grid">
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Royal Beauty</h3>
+                    <p>Official Beauty Partner</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Diamond Collection</h3>
+                    <p>Official Jewelry Partner</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Luxury Motors</h3>
+                    <p>Official Vehicle Partner</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3>Grand Hotel</h3>
+                    <p>Official Accommodation Partner</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Photo Studio Pro</h3>
+                    <p>Official Photography Partner</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Gourmet Catering</h3>
+                    <p>Official Catering Partner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Miss UZ Pageant 2025</h3>
+                    <p>Celebrating beauty, intelligence, and leadership</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#contestants">Register</a></li>
+                        <li><a href="#vote">Vote</a></li>
+                        <li><a href="#tickets">Tickets</a></li>
+                        <li><a href="#live">Live</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@missuzpageant.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Miss UZ Pageant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
